@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94dccc37-a30a-4a02-b6bd-b7fd7533e5a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/pythonMicroservice.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sendMsgTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../scripts/clients.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/clients.json" afterDir="false" />
+    <list default="true" id="94dccc37-a30a-4a02-b6bd-b7fd7533e5a3" name="Changes" comment="Finalize sensors part">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../scripts/stocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/stocks.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +94,21 @@
       <workItem from="1719523266054" duration="11855000" />
       <workItem from="1719564002462" duration="19747000" />
       <workItem from="1719601065744" duration="598000" />
+      <workItem from="1719601926626" duration="169000" />
+      <workItem from="1719837090142" duration="590000" />
+      <workItem from="1719843140746" duration="2689000" />
+      <workItem from="1719916501063" duration="11885000" />
+      <workItem from="1720084187650" duration="3545000" />
     </task>
+    <task id="LOCAL-00001" summary="Finalize sensors part">
+      <option name="closed" value="true" />
+      <created>1719601993493</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719601993493</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Finalize sensors part" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalize sensors part" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pythonMicroservice$pythonMicroservice.coverage" NAME="pythonMicroservice Coverage Results" MODIFIED="1719523795221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

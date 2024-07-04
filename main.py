@@ -12,10 +12,29 @@ from datetime import datetime, timedelta
 from dateutil.parser import parse
 import logging
 import httpx
+import os
 
 logging.basicConfig(level=logging.INFO)
 
-SQLALCHEMY_DATABASE_URL = "postgresql://bakery:password19@localhost:5433/sensor_db"
+# DATABASE_URL_HOST = "bakery_db"
+# WEB_SOCKET_SERVICE_URL = "websocket-service"
+# MQTT_SERVER = "mqtt-server"
+
+# DATABASE_URL_HOST = "localhost"
+# WEB_SOCKET_SERVICE_URL = "localhost"
+# MQTT_SERVER = "localhost"
+
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_PORT = os.getenv("DB_PORT")
+
+WEB_SOCKET_SERVICE_URL = os.getenv("WS_HOST")
+WEB_SOCKET_SERVICE_PORT = os.getenv("WS_PORT")
+
+MQTT_SERVER = os.getenv("MQTT_HOST")
+
+SQLALCHEMY_DATABASE_URL = "postgresql://" + DB_USER + ":" + DB_PASSWORD + "@" + DB_HOST + ":" + DB_PORT + "/sensor_db"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -85,7 +104,9 @@ def on_message(client, userdata, msg):
             "timestamp": timestamp_str
         }
 
-        response = httpx.post("http://192.168.68.56:8000/notification/sensor-alert", json=payload)
+        response = httpx.post(
+            "http://" + WEB_SOCKET_SERVICE_URL + ":" + WEB_SOCKET_SERVICE_PORT + "/notification/sensor-alert",
+            json=payload)
 
         if response.status_code == 200:
             print("Alert sent successfully")
@@ -191,7 +212,7 @@ client = mqtt.Client()
 
 client.on_message = on_message
 
-client.connect("192.168.68.56", 1883, 60)
+client.connect(MQTT_SERVER, 1883, 60)
 
 client.subscribe("sensor/topic")
 
