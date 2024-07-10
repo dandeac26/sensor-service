@@ -7,7 +7,6 @@ WORKDIR /usr/src/app
 # Create a virtual environment within the container
 RUN python3 -m venv venv
 
-# Ensure commands and scripts will use the venv by
 # adding the virtual environment's bin directory to PATH
 ENV PATH="/usr/src/app/venv/bin:$PATH"
 
