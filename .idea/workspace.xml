@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94dccc37-a30a-4a02-b6bd-b7fd7533e5a3" name="Changes" comment="Finalize sensors part">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../bakery_data/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../bakery_data/pg_stat_tmp/db_13823.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../bakery_data/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../bakery_data/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../scripts/stocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../scripts/stocks.json" afterDir="false" />
@@ -98,7 +101,8 @@
       <workItem from="1719837090142" duration="590000" />
       <workItem from="1719843140746" duration="2689000" />
       <workItem from="1719916501063" duration="11885000" />
-      <workItem from="1720084187650" duration="3545000" />
+      <workItem from="1720084187650" duration="5268000" />
+      <workItem from="1720452567177" duration="10379000" />
     </task>
     <task id="LOCAL-00001" summary="Finalize sensors part">
       <option name="closed" value="true" />

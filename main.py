@@ -16,13 +16,8 @@ import os
 
 logging.basicConfig(level=logging.INFO)
 
-# DATABASE_URL_HOST = "bakery_db"
-# WEB_SOCKET_SERVICE_URL = "websocket-service"
-# MQTT_SERVER = "mqtt-server"
-
-# DATABASE_URL_HOST = "localhost"
-# WEB_SOCKET_SERVICE_URL = "localhost"
-# MQTT_SERVER = "localhost"
+TEMPERATURE_THRESHOLD = float(os.getenv("TEMPERATURE_THRESHOLD"))
+HUMIDITY_THRESHOLD = float(os.getenv("HUMIDITY_THRESHOLD"))
 
 DB_HOST = os.getenv("DB_HOST")
 DB_USER = os.getenv("DB_USER")
@@ -79,10 +74,10 @@ old_timestamp = datetime.now() - timedelta(minutes=1)
 
 
 def on_message(client, userdata, msg):
-    global old_timestamp  # Declare old_timestamp as global
+    global old_timestamp
 
-    temperature_threshold = 29
-    humidity_threshold = 70
+    temperature_threshold = TEMPERATURE_THRESHOLD
+    humidity_threshold = HUMIDITY_THRESHOLD
 
     data = json.loads(msg.payload.decode())
 
@@ -90,12 +85,12 @@ def on_message(client, userdata, msg):
     temperature = float(data["temperature"])
     humidity = float(data["humidity"])
     timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')  # Convert to datetime object
+    timestamp = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
 
     if (temperature >= temperature_threshold or humidity >= humidity_threshold) and (
             timestamp - old_timestamp >= timedelta(minutes=1)):
 
-        old_timestamp = timestamp  # Update old_timestamp
+        old_timestamp = timestamp
 
         payload = {
             "sensorId": sensor_id,
@@ -174,7 +169,7 @@ def read_sensor_data_last_day():
         sensor_data_last_day = [data for data in sensor_data if parse(data.timestamp) >= one_day_ago]
         if sensor_data_last_day is None:
             raise HTTPException(status_code=404, detail="No sensor data found in the last day")
-        return [SensorReadingBase(**item.__dict__) for item in sensor_data]
+        return [SensorReadingBase(**item.__dict__) for item in sensor_data_last_day]
 
 
 @app.get("/sensor-data/{sensor_id}", response_model=List[SensorReadingBase])
@@ -194,7 +189,7 @@ def read_sensor_data_of_last_day_by_id(sensor_id: str):
         sensor_data_last_day = [data for data in sensor_data if parse(data.timestamp) >= one_day_ago]
         if sensor_data_last_day is None:
             raise HTTPException(status_code=404, detail="No sensor data found for this sensorId")
-        return [SensorReadingBase(**item.__dict__) for item in sensor_data]
+        return [SensorReadingBase(**item.__dict__) for item in sensor_data_last_day]
 
 
 @app.get("/sensor-data/{sensor_id}/last-hour", response_model=List[SensorReadingBase])
@@ -205,15 +200,11 @@ def read_sensor_data_of_last_hour_by_id(sensor_id: str):
         sensor_data_last_hour = [data for data in sensor_data if parse(data.timestamp) >= one_hour_ago]
         if sensor_data_last_hour is None:
             raise HTTPException(status_code=404, detail="No sensor data found for this sensorId")
-        return [SensorReadingBase(**item.__dict__) for item in sensor_data]
+        return [SensorReadingBase(**item.__dict__) for item in sensor_data_last_hour]
 
 
 client = mqtt.Client()
-
 client.on_message = on_message
-
 client.connect(MQTT_SERVER, 1883, 60)
-
 client.subscribe("sensor/topic")
-
 client.loop_start()
